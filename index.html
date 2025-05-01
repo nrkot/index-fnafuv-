@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>главная страница сайта</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Duru+Sans&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rubik+Dirt&family=Rubik+Glitch&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDTiCxzDGih7j6EvJr8Up83U6lCk0lxC0bmQ&s">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      background-color: black;
+      color: white;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: "Playfair Display", serif;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border: #0a0a0a solid 2px;
+    }
+
+    .menu {
+      border-bottom: 2px solid rgb(117, 0, 0);
+    }
+    header h1 {
+      font-family: 'Creepster', cursive;
+      color: var(--accent-color);
+      margin: 0;
+    }
+    nav a {
+      color: white;
+      position: relative;
+      display: inline-block;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s, transform 0.3s;
+    }
+    nav a:hover {
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #ffffff;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+    .games {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #1a1a1a;
+      background-repeat: no-repeat;
+      height: 100vh;
+      width: 100vw;
+    }
+    .games h2 {
+      margin-bottom: 30px;
+    }
+    .fan-cards {
+  background-color: #0a0a0a;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+    }
+  .fan-cards h2 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #570f88;
+    text-transform: uppercase;
+    }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    }
+  .fan-card {
+    background-color: #161616;
+    border: 2px solid #520761;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+   }
+  .fan-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #743ad5;
+  }
+  .fan-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+  .card-body {
+    padding: 15px;
+  }
+  .card-body p {
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  .card-body a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #520761;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+  .card-body a:hover {
+    background-color: #743ad5;
+  }
+  .card1 {
+    box-sizing: border-box;
+      width: 190px;
+      height: 254px;
+      background: rgba(217, 217, 217, 0.58);
+      border: 1px solid white;
+      box-shadow: 12px 17px 51px rgba(64, 1, 165, 0.22);
+      backdrop-filter: blur(6px);
+      border-radius: 17px;
+      text-align: center;
+    cursor: pointer;
+      transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+  }
+  .card1:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+  }
+  .card1:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+  }
+  .quiz {
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/445/135/754/fnaf-3-purple-man-sprintrap-death-wallpaper-preview.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+      width: 100vw;
+      border-top: 4px solid rgb(117, 0, 0);
+    margin: 0 15px;
+    padding: 60px;
+      display: flex;
+      flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .quiz h2 {
+    margin-bottom: 20px;
+  }
+  .movie{
+      background-image: url('https://photobooth.cdn.sports.ru/preset/post/f/90/3b966132148219778dd1f4ef845f3.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  .card_movie{
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .card_movie h2{
+     margin-bottom: 20px;
+  }
+    .card_movie p{
+      margin-bottom: 20px;
+  }
+    .card_movie img{
+      width: 200px;
+      height: 200px;
+      border: 3px solid rgb(124, 7, 7);
+      border-radius: 10px;
+  }
+    .card_movie .btn{
+      padding: 10px 20px;
+      background: rgb(129, 64, 4)
+  }
+  .card1 a{
+    text-decoration: none;
+    color: #ffffff;
+  }
+    .btn {
+      padding: 10px 20px;
+      background: #743ad5;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition:  0.3s ease;
+  }
+    .btn:hover {
+      background: #5612a0;
+  }
+    footer {
+        margin-top: 16px;
+        border-top: #5902a0 2px solid;
+        color: --text-color;
+        padding: 40px 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        flex-wrap: wrap;
+  }
+
+  .footer-item {
+      flex: 1;
+      min-width: 200px;
+  }
+
+  .footer-item h3 {
+    color: white;
+    margin-bottom: 15px;
+  }
+
+  .footer-item ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-item li {
+    margin-bottom: 10px;
+  }
+
+  .footer-item a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s;
+  }
+
+  .footer-item a:hover {
+        color: var(--text-color)
+  }
+  @media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  nav a {
+    margin: 5px 10px;
+  }
+
+  .games,
+  .quiz,
+  .movie,
+  .card_movie {
+    padding: 20px;
+    height: auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .fan-card img {
+    height: auto;
+  }
+
+  .card1 {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .card_movie img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }
+
+  .card_movie .btn {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .footer-item {
+    margin-bottom: 20px;
+  }
+
+  #intro-screen img {
+    width: 150px;
+  }
+
+  #intro-screen p {
+    font-size: 1.2rem;
+    padding: 0 10px;
+  }
+}
+  </style>
+</head>
+<body>
+  <div id="intro-screen" style="
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  flex-direction: column;
+">
+  <img src="https://static.wikia.nocookie.net/logopedia/images/0/06/FNAF_Alt.png/revision/latest?cb=20240206090833" 
+       alt="FNAF logo" 
+       style="width: 200px; height: auto; opacity: 0;" 
+       id="intro-logo">
+</div>
+  <header class="menu">
+    <div class="logo">
+      <img src="https://static.wikia.nocookie.net/logopedia/images/0/06/FNAF_Alt.png/revision/latest?cb=20240206090833" alt="FNAF logo" width="100px" height="50px" />
+    </div>
+    <nav>
+      <a href="#fan-cards">фан-сайты</a>
+      <a href="#quiz">квиз</a>
+      <a href="#movie">фильмы</a>
+    </nav>
+  </header>
+
+<section class="fan-cards">
+  <h2>Фан-контент</h2>
+  <div class="card-grid">
+    <div class="fan-card">
+      <img src="https://preview.redd.it/c4d-fnaf-icon-remake-v0-lsqhwzjxe88a1.png?auto=webp&s=8d405cef799b075c1cc9554cce1b245cdc74654f" alt="FNaF Art">
+      <div class="card-body">
+        <p> FNaF 1</p>
+        <a href="templates/fnaf1.html" target="_blank">перейти</a>
+      </div>
+    </div>
+
+    <div class="fan-card">
+      <img src="https://play-lh.googleusercontent.com/GYcyLlHWoZumcal0WmDJJo2rCFyl3Y0mwXm0zaD-C9gC0PJGQMhzOKHfDUVlqSDlag=w240-h480-rw" alt="FNaF 2">
+      <div class="card-body">
+        <p>FNaF 2 - возвращение игрушек</p>
+        <a href="templates/fnaf2.html" target="_blank">перейти</a>
+      </div>
+    </div>
+
+    <div class="fan-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEbz5FgiqbolmqmEHa358sb2tCQitCM_Em6A&s" alt="FNaF 3">
+      <div class="card-body">
+        <p>FNaF 3: история Спрингтрапа</p>
+        <a href="templates/fnaf3.html" target="_blank">перейти</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="quiz" id="quiz">
+    <h2>квиз</h2>
+    <div class="card1">
+      <a href="templates/question.html">Проверь знания по FNaF</a>
+    </div>
+  </section>
+  <section class="movie" id="movie">
+    <h2>фильмы</h2>
+    <div class="card_movie">
+        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS3Sc_dyuaE2m1eTejimUzZi4Be9C7eg-rgHbcgPg_oU21_wOd6OeoW7gQOzFxQR2xMAIEoflSZGVd9DhD_1lxpDiXN0LIJrVrJHPv7rRQ" alt="">
+        <a class="btn" href="templates/movie.html">перейти на сайт</a>
+        <p>five nigths at freddy</p>
+        <p>«Пять ноче́й с Фре́дди» — американский фильм ужасов о сверхъестественном, срежиссированный и написанный Эммой Тамми в соавторстве со Скоттом Коутоном и Сетом Каддебэком. Основан на серии видеоигр Five Nights at Freddy’s, созданной Скоттом Коутоном</p>
+        <button id="openModalBtn" style="bottom:20px; right:20px; padding:10px 20px; background:#520761; color:white; border:none; border-radius:8px; cursor:pointer;">Смотреть трейлер</button>
+
+
+        <div id="trailerModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:2000;">
+          <div style="position:relative; width:80%; max-width:800px; background:black; border:2px solid white; border-radius:10px; overflow:hidden;">
+            <span id="closeModalBtn" style="position:absolute; top:10px; right:15px; font-size:30px; color:white; cursor:pointer;">&times;</span>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/0VH9WCFV6XQ?si=4wzTVttRxqmQkXvc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-item">
+        <h3>contact us</h3>
+        <ul>
+          <li><a href="#">example.com@gmail.com</a></li>
+          <li><a href="#">+01920390212223</a></li>
+          <li><a href="#">idk</a></li>
+        </ul>
+      </div>
+      <div class="footer-item">
+        <h3>community</h3>
+        <ul>
+          <li><a href="#">Community Central</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">support</a></li>
+        </ul>
+      </div>
+      <div class="footer-item">
+        <h3>fangames</h3>
+        <ul>
+          <li><a href="#">Forgotten At Fredbear's</a></li>
+          <li><a href="#">JR’s: Enter The Flipside</a></li>
+          <li><a href="#">Five Nights at Candy's 4 (Official)</a></li>
+        </ul>
+      </div>
+        <p class="copyright">FNaF Universe © 2025</p>
+      </div>
+    </div>
+  </footer>
+</body>
+<script>
+      const modal = document.getElementById("trailerModal");
+      const openBtn = document.getElementById("openModalBtn");
+      const closeBtn = document.getElementById("closeModalBtn");
+
+  openBtn.onclick = () => {
+    modal.style.display = "flex";
+  }
+
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+    modal.querySelector("iframe").src = modal.querySelector("iframe").src; 
+  }
+
+  window.onclick = (e) => {
+    if (e.target == modal) {
+      modal.style.display = "none";
+      modal.querySelector("iframe").src = modal.querySelector("iframe").src;
+    }
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+gsap.from(".fan-cards", {
+  scrollTrigger: {
+    trigger: ".fan-cards",
+    start: "top 80%",
+    toggleActions: "play none none none"
+  },
+  opacity: 0,
+  y: 50,
+  duration: 1
+});
+
+gsap.from(".quiz", {
+  scrollTrigger: {
+    trigger: ".quiz",
+    start: "top 80%",
+    toggleActions: "play none none none"
+  },
+  opacity: 0,
+  x: -100,
+  duration: 1
+});
+
+gsap.from(".movie", {
+  scrollTrigger: {
+    trigger: ".movie",
+    start: "top 80%",
+    toggleActions: "play none none none"
+  },
+  opacity: 0,
+  y: 100,
+  duration: 1
+});
+
+gsap.from(".footer-container", {
+  scrollTrigger: {
+    trigger: ".footer-container",
+    start: "top 90%",
+    toggleActions: "play none none none"
+  },
+  opacity: 0,
+  scale: 0.8,
+  duration: 1
+});
+
+  window.addEventListener("load", () => {
+      gsap.to("#intro-logo", {
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out"
+    });
+
+    
+    setTimeout(() => {
+      gsap.to("#intro-screen", {
+        opacity: 0,
+        duration: 1,
+        onComplete: () => {
+          document.getElementById("intro-screen").style.display = "none";
+        }
+      });
+
+    
+      gsap.from("header, section, footer", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.3
+      });
+    }, 2500);
+  });
+</script>
+
+</html>
